@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: 673982153424.dkr.ecr.eu-central-1.amazonaws.com/lesson-5-ecr
+  tag: django-v1
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8000
+
+hpa:
+  minReplicas: 1
+  maxReplicas: 2
+  cpuThreshold: 70
+
+ingress:
+  enabled: false
+
+config:
+  SECRET_KEY: your_django_secret_key
+  DEBUG: "True"
+  ALLOWED_HOSTS: "localhost,127.0.0.1,nginx"
+  POSTGRES_DB: lesson_db
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: ""
+  POSTGRES_HOST: db
+  POSTGRES_PORT: 5432
+
