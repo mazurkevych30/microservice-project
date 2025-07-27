@@ -24,10 +24,10 @@ spec:
 
   environment {
     ECR_REGISTRY = "673982153424.dkr.ecr.eu-central-1.amazonaws.com"
-    IMAGE_NAME = "django-app"
+    IMAGE_NAME = "lesson-5-ecr"
     IMAGE_TAG = "latest"
-    CONTEXT_DIR = "django-app"
-    DOCKERFILE = "django-app/Dockerfile"
+    CONTEXT_DIR = "django"
+    DOCKERFILE = "django/Dockerfile"
     COMMIT_MESSAGE = "Update image tag via CI"
     BRANCH = "lesson-8-9"
     FILE_TO_UPDATE = "lesson-8-9/charts/django-app/values.yaml"
@@ -55,9 +55,9 @@ aws ecr describe-repositories --repository-names $IMAGE_NAME || echo "⚠️ ECR
   --destination=$ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG \
   --cache=true \
   --insecure \
-  --skip-tls-verify
+  --skip-tls-verify || (echo "❌ Kaniko push failed" && exit 1)
 
-[ $? -eq 0 ] && echo "✅ Kaniko image pushed" || (echo "❌ Kaniko push failed" && exit 1)
+echo "✅ Kaniko image pushed"
 '''
         }
       }
