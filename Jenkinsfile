@@ -53,7 +53,6 @@ aws ecr describe-repositories --repository-names $IMAGE_NAME || echo "⚠️ ECR
   --context `pwd`/$CONTEXT_DIR \
   --dockerfile `pwd`/$DOCKERFILE \
   --destination=$ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG \
-  --cache=true \
   --insecure \
   --skip-tls-verify || (echo "❌ Kaniko push failed" && exit 1)
 
