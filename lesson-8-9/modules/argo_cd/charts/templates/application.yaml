@@ -14,6 +14,11 @@ spec:
     helm:
       {{- toYaml .source.helm | nindent 6 }}
     {{- end }}
+    {{- if .source.parameters }}
+    helm:
+      parameters:
+        {{- toYaml .source.parameters | nindent 8 }}
+    {{- end }}
   destination:
     server: {{ .destination.server | quote }}
     namespace: {{ .destination.namespace | quote }}

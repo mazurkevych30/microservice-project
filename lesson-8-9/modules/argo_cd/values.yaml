@@ -3,4 +3,4 @@ server:
     type: LoadBalancer
     port: 443
 
-  installCRDs: true
+installCRDs: true

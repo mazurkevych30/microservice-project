@@ -5,10 +5,13 @@ applications:
     source:
       repoURL: https://github.com/mazurkevych30/microservice-project.git
       path: charts/django-app
-      targetRevision: lesson-4
+      targetRevision: lesson-8-9
       helm:
         valueFiles:
           - values.yaml
+      parameters:
+        - name: nameOverride
+          value: django-app
     destination:
       server: https://kubernetes.default.svc
       namespace: default
@@ -16,11 +19,3 @@ applications:
       automated:
         prune: true
         selfHeal: true
-
-repositories:
-  - name: django-app
-    url: https://github.com/mazurkevych30/microservice-project.git
-
-repoConfig:
-  insecure: "true"
-  enableLfs: "true"
