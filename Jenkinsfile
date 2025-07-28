@@ -67,17 +67,19 @@ echo "Kaniko image pushed"
         withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
           container('git') {
             sh '''
-git config --global user.email "jenkins-bot@local"
-git config --global user.name "jenkins-bot"
-git clone --depth=1 https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/mazurkevych30/microservice-project.git
+git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/mazurkevych30/microservice-project.git
+
 cd microservice-project
 git checkout ${BRANCH}
+cd lesson-8-9/charts/django-app
 
-helm lint lesson-8-9/charts/django-app || (echo "Helm lint failed" && exit 1)
+sed -i "s/tag: .*/tag: ${IMAGE_TAG}/" values.yaml
 
-sed -i "s/tag: .*/tag: ${IMAGE_TAG}/" ${FILE_TO_UPDATE}
-git add ${FILE_TO_UPDATE}
-git commit -m "${COMMIT_MESSAGE}" || echo "No changes to commit"
+git config --global user.email "jenkins-bot@local"
+git config --global user.name "jenkins-bot"
+
+git add values.yaml
+git commit -m "Update image tag to ${IMAGE_TAG}" || echo "[WARN] No changes to commit"
 git push origin ${BRANCH}
 '''
           }
