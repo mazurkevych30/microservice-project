@@ -10,7 +10,10 @@
 - `modules/vpc/` — модуль для створення VPC, підмереж, маршрутів, Internet Gateway.
 - `modules/ecr/` — модуль для створення репозиторію ECR.
 - `modules/eks/` — модуль для створення EKS-кластера та Node Group.
+- `modules/jenkins/` — модуль для встановлення Jenkins через Helm.
+- `modules/argo_cd/` — модуль для встановлення Argo CD та керування застосунками.
 - `charts/django-app/` — Helm-чарт для деплою Django застосунку у Kubernetes (deployment, service, configmap, hpa).
+- `argo_cd/charts/` — Helm-чарт для Argo CD Application-ресурсів.
 
 # Команди для ініціалізації та запуску
 
@@ -35,5 +38,14 @@ terraform destroy   # Видалення всієї створеної інфр�
 ## eks
 Модуль створює кластер AWS EKS, IAM-ролі для кластера та вузлів, а також Node Group з параметрами масштабування (desired, min, max size). Дозволяє автоматично розгортати Kubernetes-кластер для запуску контейнеризованих застосунків.
 
+## modules/jenkins/
+Встановлює Jenkins через Helm.Налаштовує чарти: ресурси, агент, креденшели. Виводить URL доступу до інтерфейсу та admin пароль через outputs.tf.
+
+## modules/argo_cd/
+Встановлює Argo CD через Helm. Створює Helm release для самої платформи та для керованих застосунків. Виводить hostname, initial password та інші параметри.
+
 ## charts/django-app
 Helm-чарт для деплою Django застосунку у кластері Kubernetes. Містить шаблони для Deployment, Service, ConfigMap, HPA та використовує змінні з values.yaml для гнучкого налаштування параметрів розгортання.
+
+## argo_cd/charts/
+Включає application.yaml та repository.yaml для керування застосунками. Встановлюється через окремий Helm release.Параметри — через values.yaml.
