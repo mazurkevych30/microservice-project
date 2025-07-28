@@ -1,0 +1,21 @@
+applications:
+  - name: django-app
+    namespace: argocd
+    project: default
+    source:
+      repoURL: https://github.com/mazurkevych30/microservice-project.git
+      path: lesson-8-9/charts/django-app
+      targetRevision: lesson-8-9
+      helm:
+        valueFiles:
+          - values.yaml
+      parameters:
+        - name: nameOverride
+          value: django-app
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: default
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
