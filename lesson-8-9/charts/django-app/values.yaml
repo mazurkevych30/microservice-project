@@ -21,9 +21,9 @@ config:
   SECRET_KEY: your_django_secret_key
   DEBUG: "True"
   ALLOWED_HOSTS: "localhost,127.0.0.1,nginx"
-  POSTGRES_DB: lesson_db
+  POSTGRES_DB: myapp
   POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: ""
+  POSTGRES_PASSWORD: "admin123AWS23"
   POSTGRES_HOST: db
   POSTGRES_PORT: 5432
 

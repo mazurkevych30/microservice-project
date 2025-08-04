@@ -14,6 +14,8 @@ resource "aws_db_instance" "standard" {
   multi_az                = var.multi_az
   publicly_accessible     = var.publicly_accessible
   backup_retention_period = var.backup_retention_period
+  skip_final_snapshot     = var.skip_final_snapshot
+  final_snapshot_identifier = var.final_snapshot_identifier
   parameter_group_name    = aws_db_parameter_group.standard[0].name
 
   tags = var.tags

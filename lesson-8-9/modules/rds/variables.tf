@@ -65,6 +65,16 @@ variable "publicly_accessible" {
   default = false
 }
 
+variable "skip_final_snapshot" {
+  type    = bool
+  default = true
+}
+
+variable "final_snapshot_identifier" {
+  type        = string
+  default     = null
+}
+
 variable "multi_az" {
   type    = bool
   default = false
