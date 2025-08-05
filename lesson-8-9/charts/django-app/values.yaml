@@ -20,10 +20,10 @@ ingress:
 config:
   SECRET_KEY: your_django_secret_key
   DEBUG: "True"
-  ALLOWED_HOSTS: "localhost,127.0.0.1,nginx"
+  ALLOWED_HOSTS: "localhost,127.0.0.1,nginx,*"
   POSTGRES_DB: myapp
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: "admin123AWS23"
-  POSTGRES_HOST: db
+  POSTGRES_HOST: myapp-db.ctuk4q8287nn.eu-central-1.rds.amazonaws.com
   POSTGRES_PORT: 5432
 
