@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: 673982153424.dkr.ecr.eu-central-1.amazonaws.com/lesson-5-ecr
-  tag: v1.0-local-check
+  tag: v1.0.2
   pullPolicy: IfNotPresent
 
 service:
