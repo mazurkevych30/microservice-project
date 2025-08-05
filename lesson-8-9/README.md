@@ -10,6 +10,7 @@
 - `modules/vpc/` — модуль для створення VPC, підмереж, маршрутів, Internet Gateway.
 - `modules/ecr/` — модуль для створення репозиторію ECR.
 - `modules/eks/` — модуль для створення EKS-кластера та Node Group.
+- `module/rds/` — модуль для створення RDS або Aurora-кластер
 - `modules/jenkins/` — модуль для встановлення Jenkins через Helm.
 - `modules/argo_cd/` — модуль для встановлення Argo CD та керування застосунками.
 - `charts/django-app/` — Helm-чарт для деплою Django застосунку у Kubernetes (deployment, service, configmap, hpa).
@@ -40,6 +41,9 @@ terraform destroy   # Видалення всієї створеної інфр�
 
 ## modules/jenkins/
 Встановлює Jenkins через Helm.Налаштовує чарти: ресурси, агент, креденшели. Виводить URL доступу до інтерфейсу та admin пароль через outputs.tf.
+
+## modules/rds/
+Підіймає Aurora Cluster або звичайну RDS instance на основі значення use_aurora. Автоматично створює DB Subnet Group, Security Group, Parameter Group для обраного типу БД. Працює з мінімальними змінами змінних і підтримує багаторазове використання.
 
 ## modules/argo_cd/
 Встановлює Argo CD через Helm. Створює Helm release для самої платформи та для керованих застосунків. Виводить hostname, initial password та інші параметри.
