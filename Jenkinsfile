@@ -29,7 +29,7 @@ spec:
     CONTEXT_DIR = "django"
     DOCKERFILE = "django/Dockerfile"
     COMMIT_MESSAGE = "Update image tag via CI"
-    BRANCH = "lesson-8-9"
+    BRANCH = "final-project"
     FILE_TO_UPDATE = "lesson-8-9/charts/django-app/values.yaml"
   }
 
